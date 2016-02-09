@@ -14,8 +14,10 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('contact', 'ContactController@index');
+// \ blackslash represents namespaces
+Route::get('register', 'Auth\AuthController@getRegister')->middleware('web');
 
-Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister')->middleware('web');
 
 /*
 |--------------------------------------------------------------------------
