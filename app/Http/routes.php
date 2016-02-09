@@ -11,14 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->middleware('web');
 
-Route::get('contact', 'ContactController@index');
+Route::get('contact', 'ContactController@index')->middleware('web');
 // \ blackslash represents namespaces
 Route::get('register', 'Auth\AuthController@getRegister')->middleware('web');
-
 Route::post('register', 'Auth\AuthController@postRegister')->middleware('web');
+Route::get('logout', 'Auth\AuthController@logout')->middleware('web');
 
+Route::get('login', 'Auth\AuthController@getLogin')->middleware('web');
+Route::post('login', 'Auth\AuthController@postLogin')->middleware('web');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
