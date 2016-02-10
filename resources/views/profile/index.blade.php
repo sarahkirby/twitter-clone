@@ -8,7 +8,7 @@
 <h1>Hi there {{ \Auth::user()->name }}</h1>
 <h2>Account stats</h2>
 <ul>
-	<li>{{ $totalTweets }}</li>
+	<li>Total Tweets: {{ $totalTweets }}</li>
 </ul>
 
 <h2>Write a new Tweet</h2>
