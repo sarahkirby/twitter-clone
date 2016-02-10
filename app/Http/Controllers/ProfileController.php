@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tweet;
 
-class AccountController extends Controller
+class ProfileController extends Controller
 {
     public function index() {
 
@@ -32,7 +32,7 @@ class AccountController extends Controller
 // Save into database
 		$newTweet->save();
 
-    	return redirect('account');
+    	return redirect('profile');
 
     }
 }

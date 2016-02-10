@@ -13,7 +13,7 @@
 
 <h2>Write a new Tweet</h2>
 
-<form action="/account/new-tweet" method="post">
+<form action="/profile/new-tweet" method="post">
 
 	{!! csrf_field() !!}
 	
