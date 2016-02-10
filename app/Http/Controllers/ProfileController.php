@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tweet;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,7 @@ class ProfileController extends Controller
     	// Count the total amount of tweets by this user
     	$totalTweets = \Auth::user()->tweets()->count();
     	
-    	return view('account.index', compact('totalTweets'));
+    	return view('profile.index', compact('totalTweets'));
     }
 // Request - capturing data from form
     public function newTweet(Request $request) {
@@ -33,6 +34,14 @@ class ProfileController extends Controller
 		$newTweet->save();
 
     	return redirect('profile');
+
+    }
+    public function show($username) {
+
+        // Find the user
+        $user = User::where('username', '=', $username)->firstOrFail();
+
+        return view('profile.show', compact('user'));
 
     }
 }
