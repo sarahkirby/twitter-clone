@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    // will return the tweets the user has written
+    // will return the tweets the user has written. Eloquint - Laravel documentation (spelling)
     public function tweets() {
         return $this->hasMany('App\Tweet');
     }
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'email', 'password',
     ];
 
     /**
