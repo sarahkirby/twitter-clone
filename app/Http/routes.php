@@ -23,6 +23,7 @@ Route::get('login', 'Auth\AuthController@getLogin')->middleware('web');
 Route::post('login', 'Auth\AuthController@postLogin')->middleware('web');
 // ['auth'] - you have to be logged in to access page
 Route::get('account', 'AccountController@index')->middleware(['web', 'auth']);
+Route::post('account/new-tweet', 'AccountController@newTweet')->middleware(['web', 'auth']);
 
 /*
 |--------------------------------------------------------------------------

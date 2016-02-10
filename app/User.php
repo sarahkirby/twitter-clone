@@ -6,6 +6,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    // will return the tweets the user has written
+    public function tweets() {
+        return $this->hasMany('App\Tweet');
+    }
     /**
      * The attributes that are mass assignable.
      *
