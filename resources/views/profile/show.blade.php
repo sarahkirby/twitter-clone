@@ -30,6 +30,10 @@
 			<p>{{ $tweet->content }}</p>
 			{{-- grabbing the user through the tweet model though the user function  --}}
 			<small>Posted: {{ $tweet->created_at }} by {{ $tweet->user->name }}</small>
+			{{-- if user is logged in (Y/N) if yes check if the user id of the tweet is the same as the logged in user --}}
+			@if( \Auth::check() && $tweet->user->id == \Auth::user()->id )
+				<a href="/profile/delete-tweet/{{ $tweet->id }}">Delete</a>
+			@endif
 
 			<h3>Comments: </h3>
 			{{-- Check if person is logged in --}}
@@ -58,7 +62,7 @@
 				@empty
 				<p>Be the first to reply!</p>
 			@endforelse
-			<hr>
+			
 		</article>
 
 
