@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Tweet;
 use App\User;
+use App\Comment;
 
 class ProfileController extends Controller
 {
@@ -46,4 +47,33 @@ class ProfileController extends Controller
         return view('profile.show', compact('user', 'userPosts'));
 
     }
+    // 'Request' data from form
+    public function newComment(Request $request) {
+
+        $this->validate($request, [
+            'comment'=>'required|min:4|max:140',
+            'tweet-id'=>'required|exists:tweets,id'
+        ]);
+
+        // Create new comment. (Need 'use App\Comment' at top for the object to instaniate)
+        $comment = new Comment();
+
+        // Inserting data into database
+        // comment model->content table row = form data-> comment input field post data
+        $comment->content = $request->comment;
+        $comment->user_id = \Auth::user()->id;
+        $comment->tweet_id = $request['tweet-id'];
+
+        $comment->save();
+
+// redirect user back to page they were on
+        return back();
+    }
+
+
+
+
+
+
+
 }
