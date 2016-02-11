@@ -9,6 +9,9 @@ class Tweet extends Model
     public function user() {
     	// finds the user that owns the Tweet
     	return $this->belongsTo('App\User');
-
+    }
+    // 
+    public function comments() {
+    	return $this->hasMany('App\Comment');
     }
 }

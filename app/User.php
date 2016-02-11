@@ -10,6 +10,10 @@ class User extends Authenticatable
     public function tweets() {
         return $this->hasMany('App\Tweet');
     }
+    // this user has many comments
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
     /**
      * The attributes that are mass assignable.
      *
