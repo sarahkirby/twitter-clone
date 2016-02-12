@@ -6,7 +6,7 @@
 @section('content')
 
 	<header id="user-profile">
-		<img src="" alt="" width="120" height="120">
+		<img src="/profiles/{{ $user->profileImage }}" alt="profile image" width="240">
 		<h1>{{ $user->name }}</h1>
 		<p>{{ $user->description }}</p>
 		<ul>

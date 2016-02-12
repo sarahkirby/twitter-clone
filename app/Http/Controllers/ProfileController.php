@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Tweet;
 use App\User;
 use App\Comment;
+use Intervention\Image\ImageManager;
 
 class ProfileController extends Controller
 {
@@ -96,6 +97,36 @@ class ProfileController extends Controller
         $tweet->delete();
 
         return redirect('profile/'.$tweet->user->username);
+    }
+
+    public function newProfileImage(Request $request) {
+
+        $this->validate($request, [
+            // 'image' checks it is an image file eg. jpeg, png etc
+            'photo'=>'required|image'
+        ]);
+
+        // Create instance of Image Intervention
+        $manager = new ImageManager();
+
+        $profileImage = $manager->make($request->photo);
+
+        $profileImage->resize(240, null, function ($constraint) {
+        $constraint->aspectRatio();
+        });
+
+        // save() automatically points to the public folder. number on the end is the file size (image quality)
+        $profileImage->save('profiles/'.\Auth::user()->id.'.jpg', 90);
+
+        // Save filename in the user's table.
+        $user = User::find( \Auth::user()->id );
+
+        $user->profileImage = \Auth::user()->id.'.jpg';
+
+        $user->save();
+
+        return redirect('profile/'.$user->username);
+
 
 
     }

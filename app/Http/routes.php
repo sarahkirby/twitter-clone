@@ -32,6 +32,8 @@ Route::get('profile/delete-tweet/{id}', 'ProfileController@deleteTweet')->middle
 
 Route::get('profile/delete-tweet/{id}/confirm', 'ProfileController@destroyTweet')->middleware(['web','auth']);
 
+Route::post('profile/new-profile-image', 'ProfileController@newProfileImage')->middleware(['web','auth']);
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

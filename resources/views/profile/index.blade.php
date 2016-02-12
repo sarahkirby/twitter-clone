@@ -11,6 +11,26 @@
 	<li>Total Tweets: {{ $totalTweets }}</li>
 </ul>
 
+{{-- If user does not have a profile image run --}}
+@if( !\Auth::user()->profileImage )
+
+	<h2>Add a new profile image!</h2>
+
+@endif
+{{-- Must be post for binary files. Must incl enctype --}}
+	<form action="/profile/new-profile-image" method="post" enctype="multipart/form-data">
+
+	{!! csrf_field() !!}
+
+	<input type="file" name="photo" required>
+	<input type="submit" value="Upload!">
+		
+
+	</form>
+
+
+
+
 <h2>Write a new Tweet</h2>
 
 <form action="/profile/new-tweet" method="post">
