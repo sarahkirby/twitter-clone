@@ -22,8 +22,8 @@
 
 	{!! csrf_field() !!}
 
-	<input type="file" name="photo" required>
-	<input type="submit" value="Upload!">
+		<input type="file" name="photo" required>
+		<input type="submit" value="Upload!">
 		
 
 	</form>
@@ -41,6 +41,11 @@
 		<label for="content">Tweet:</label>
 		<textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
 	</div>	
+
+	<div>
+		<label for="tags">Tags: </label>
+		<textarea name="tags" id="tags" placeholder="#web #bro #mate #twitterclone">{{ old('tags') }}</textarea>
+	</div>
 
 	<input type="submit" value="Post">
 

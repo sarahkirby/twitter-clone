@@ -35,6 +35,13 @@
 				<a href="/profile/delete-tweet/{{ $tweet->id }}">Delete</a>
 			@endif
 
+			@foreach($tweet->tags as $tag )
+
+				<strong>#{{ $tag->name }}</strong>
+
+			@endforeach
+
+
 			<h3>Comments: </h3>
 			{{-- Check if person is logged in --}}
 			@if(\Auth::check())
